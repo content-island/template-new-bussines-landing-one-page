@@ -1,0 +1,66 @@
+---
+const services = [
+  {
+    title: 'Web Development',
+    description: 'Custom web applications built with modern technologies for optimal performance and user experience.',
+    image: '/src/assets/girl-working.webp',
+    alt: 'Web Development: Custom web applications built with modern technologies',
+    reverse: false,
+  },
+  {
+    title: 'UI/UX Design',
+    description: 'Beautiful, intuitive designs that engage users and drive conversions across all platforms.',
+    image: '/src/assets/ux.webp',
+    alt: 'UI/UX Design: Principios y mejores prácticas',
+    reverse: true,
+  },
+  {
+    title: 'Consulting',
+    description: 'Expert guidance and support to help you make the right technology decisions.',
+    image: '/src/assets/consulting.webp',
+    alt: 'Consulting: Expert guidance and support to help you make the right technology decisions',
+    reverse: false,
+  },
+];
+---
+
+<section class="py-big-1 md:py-big-4" style="background-color: var(--bg-secondary);" id="services">
+  <div class="wrapper gap-big-1 md:gap-big-2 flex flex-col">
+    <header class="mx-auto max-w-[48ch] text-center">
+      <h2 class="mb-lg text-2xl">Our Services</h2>
+      <p>
+        Transform your ideas into reality with our innovative solutions. We help businesses grow and succeed in the
+        digital age through cutting-edge technology and creative strategies.
+      </p>
+    </header>
+    <ul class="gap-2xl md:gap-big-1 flex flex-col">
+      {
+        services.map((service, index) => (
+          <li>
+            <div
+              class="gap-md md:gap-xl mx-auto grid max-w-[968px] grid-cols-1 overflow-hidden rounded-lg md:grid-cols-2"
+              style="background-color: var(--bg-primary); box-shadow: var(--shadow-card);"
+            >
+              <img
+                src={service.image}
+                alt={service.alt}
+                loading="lazy"
+                width="350"
+                class={`w-full object-cover ${index === 1 ? 'md:order-2' : ''}`}
+              />
+              <div class={`p-md md:p-xl gap-lg flex flex-col md:justify-center ${index === 1 ? 'md:order-1' : ''}`}>
+                <div class="gap-md flex flex-col">
+                  <h3 class="text-lg leading-none font-bold">{service.title}</h3>
+                  <p>{service.description}</p>
+                </div>
+                <a href="#" class="btn-primary-outline btn-small">
+                  Learn more
+                </a>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

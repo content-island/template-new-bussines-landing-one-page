@@ -1,0 +1,213 @@
+@import 'tailwindcss';
+
+/* Variables CSS personalizadas para modo claro y oscuro */
+@theme {
+  --color-pure-black: #000000;
+  --color-pure-white: #ffffff;
+
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+
+  /* Fuentes */
+  --font-title: 'Geologica Variable', sans-serif;
+  --font-body: 'Inter Variable', sans-serif;
+
+  /* Font sizes */
+  --text-xs: clamp(0.7813rem, 0.775rem + 0.0278vw, 0.8rem);
+  --text-sm: clamp(0.9375rem, 0.9167rem + 0.0926vw, 1rem);
+  --text-base: clamp(1.125rem, 0.0833rem + 0.1852vw, 1.25rem);
+  --text-lg: clamp(1.35rem, 1.2792rem + 0.3148vw, 1.5625rem);
+  --text-xl: clamp(1.62rem, 1.509rem + 0.4935vw, 1.9531rem);
+  --text-2xl: clamp(1.944rem, 1.7782rem + 0.7369vw, 2.4414rem);
+  --text-3xl: clamp(2.3328rem, 2.0931rem + 1.0651vw, 3.0518rem);
+  --text-4xl: clamp(2.7994rem, 2.4609rem + 1.5042vw, 3.8147rem);
+
+  /* Textos */
+  --text-color: var(--color-pure-black);
+  --text-60: hsl(from var(--text-color) h s l / 0.6);
+  --text-70: hsl(from var(--text-color) h s l / 0.7);
+  --text-85: hsl(from var(--text-color) h s l / 0.85);
+  --text-90: hsl(from var(--text-color) h s l / 0.9);
+  --text-contrast: var(--color-pure-white);
+
+  /* Background */
+  --bg-primary: var(--color-neutral-50);
+  --bg-secondary: var(--color-neutral-100);
+
+  /* Spacing usar las de tailwind van en base a 4 */
+  --space-base: 8px;
+  --spacing-xs: calc(var(--space-base) / 2);
+  --spacing-sm: var(--space-base);
+  --spacing-md: calc(var(--space-base) * 2);
+  --spacing-lg: calc(var(--space-base) * 3);
+  --spacing-xl: calc(var(--space-base) * 4);
+  --spacing-2xl: calc(var(--space-base) * 5);
+  --spacing-big-1: calc(var(--space-base) * 6);
+  --spacing-big-2: calc(var(--space-base) * 7);
+  --spacing-big-3: calc(var(--space-base) * 8);
+  --spacing-big-4: calc(var(--space-base) * 10);
+
+  /* Other variables */
+  --header-background: var(--color-pure-white);
+  --input-background: var(--color-neutral-200);
+  --footer-background: var(--color-neutral-900);
+  --footer-text-color: var(--color-neutral-200);
+
+  --border-color: var(--color-neutral-500);
+  --border-default: 1px solid var(--border-color);
+
+  --accent-color-one: #3b82f6;
+  --button-primary-color: var(--color-neutral-900);
+
+  --button-primary-fill-bg: var(--button-primary-color);
+  --button-primary-fill-text: var(--color-neutral-50);
+  --button-primary-fill-hover-bg: var(--color-neutral-800);
+  --button-primary-fill-hover-text: var(--color-neutral-50);
+
+  --button-primary-outline-bg: transparent;
+  --button-primary-outline-border: 1px solid var(--button-primary-color);
+  --button-primary-outline-text: var(--button-primary-color);
+
+  --shadow-color: hsl(0deg 0% 0% / 0.1);
+  --shadow-card: 0 4px 10px 0 var(--shadow-color);
+
+  --padding-section: var(--spacing-big-1);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --padding-section: var(--spacing-big-4);
+  }
+}
+
+html:has(#theme-toggle:checked) {
+  color-scheme: dark;
+
+  --bg-primary: var(--color-neutral-900);
+  --bg-secondary: var(--color-neutral-800);
+  --text-color: var(--color-pure-white);
+  --shadow-color: hsl(0deg 0% 0% / 0.5);
+  --button-primary-color: var(--color-neutral-50);
+  --header-background: var(--color-neutral-950);
+  --footer-background: var(--color-neutral-200);
+  --input-background: var(--color-neutral-700);
+  --footer-text-color: var(--color-neutral-900);
+  --button-primary-fill-text: var(--color-neutral-900);
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  animation: page 1s ease-in;
+  line-height: 1.5;
+  color: var(--text-85);
+  background-color: var(--bg-primary);
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
+  color: var(--text-90);
+}
+
+@layer components {
+  .wrapper {
+    width: 100%;
+    margin: 0 auto;
+    @apply p-md max-w-[1400px];
+
+    @media (max-width: 768px) {
+      @apply py-xl px-md;
+    }
+
+    @media (max-width: 1200px) {
+      @apply py-big-2 px-md;
+    }
+  }
+
+  /* Botones personalizados */
+  .btn-primary-fill {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: var(--fs-sm);
+    width: fit-content;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+    background-color: var(--button-primary-fill-bg);
+    color: var(--button-primary-fill-text);
+  }
+
+  .btn-primary-fill:hover {
+    background-color: var(--button-primary-fill-hover-bg);
+    color: var(--button-primary-fill-hover-text);
+  }
+
+  .btn-primary-outline {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: var(--fs-sm);
+    width: fit-content;
+    transition:
+      background-color 0.3s,
+      color 0.3s,
+      border-color 0.3s;
+    background-color: var(--button-primary-outline-bg);
+    border: var(--button-primary-outline-border);
+    color: var(--button-primary-outline-text);
+  }
+
+  .btn-primary-outline:hover {
+    background-color: hsl(from var(--button-primary-color) h s l / 0.1);
+  }
+
+  .btn-small {
+    font-size: var(--fs-xs);
+  }
+}
+
+@layer utilities {
+  .text-60 {
+    color: var(--text-60);
+  }
+
+  .text-70 {
+    color: var(--text-70);
+  }
+
+  .text-85 {
+    color: var(--text-85);
+  }
+
+  .text-90 {
+    color: var(--text-90);
+  }
+}
