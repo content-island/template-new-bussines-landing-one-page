@@ -24,7 +24,7 @@
   /* Font sizes */
   --text-xs: clamp(0.7813rem, 0.775rem + 0.0278vw, 0.8rem);
   --text-sm: clamp(0.9375rem, 0.9167rem + 0.0926vw, 1rem);
-  --text-base: clamp(1.125rem, 0.0833rem + 0.1852vw, 1.25rem);
+  --text-base: clamp(1.125rem, 1.0833rem + 0.1852vw, 1.25rem);
   --text-lg: clamp(1.35rem, 1.2792rem + 0.3148vw, 1.5625rem);
   --text-xl: clamp(1.62rem, 1.509rem + 0.4935vw, 1.9531rem);
   --text-2xl: clamp(1.944rem, 1.7782rem + 0.7369vw, 2.4414rem);
@@ -32,12 +32,18 @@
   --text-4xl: clamp(2.7994rem, 2.4609rem + 1.5042vw, 3.8147rem);
 
   /* Textos */
-  --text-color: var(--color-pure-black);
+  --color-text-primary: var(--color-pure-black);
+  --color-text-60: hsl(from var(--color-text-primary) h s l / 0.6);
+  --color-text-70: hsl(from var(--color-text-primary) h s l / 0.7);
+  --color-text-85: hsl(from var(--color-text-primary) h s l / 0.85);
+  --color-text-90: hsl(from var(--color-text-primary) h s l / 0.9);
+  --color-text-contrast: var(--color-pure-white);
+  /* --text-color: var(--color-pure-black);
   --text-60: hsl(from var(--text-color) h s l / 0.6);
   --text-70: hsl(from var(--text-color) h s l / 0.7);
   --text-85: hsl(from var(--text-color) h s l / 0.85);
   --text-90: hsl(from var(--text-color) h s l / 0.9);
-  --text-contrast: var(--color-pure-white);
+  --text-contrast: var(--color-pure-white); */
 
   /* Background */
   --bg-primary: var(--color-neutral-50);
@@ -110,7 +116,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-size: var(--fs-sm);
+  font-size: var(--text-base);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -138,15 +144,7 @@ h6 {
   .wrapper {
     width: 100%;
     margin: 0 auto;
-    @apply p-md max-w-[1400px];
-
-    @media (max-width: 768px) {
-      @apply py-xl px-md;
-    }
-
-    @media (max-width: 1200px) {
-      @apply py-big-2 px-md;
-    }
+    @apply py-md px-big-2 max-w-[1400px];
   }
 
   /* Botones personalizados */
@@ -155,7 +153,7 @@ h6 {
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: 8px;
     font-weight: 500;
-    font-size: var(--fs-sm);
+    font-size: var(--text-sm);
     width: fit-content;
     transition:
       background-color 0.3s,
@@ -174,7 +172,7 @@ h6 {
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: 8px;
     font-weight: 500;
-    font-size: var(--fs-sm);
+    font-size: var(--text-sm);
     width: fit-content;
     transition:
       background-color 0.3s,
@@ -190,24 +188,24 @@ h6 {
   }
 
   .btn-small {
-    font-size: var(--fs-xs);
+    font-size: var(--text-xs);
   }
 }
 
 @layer utilities {
   .text-60 {
-    color: var(--text-60);
+    color: var(--color-text-60);
   }
 
   .text-70 {
-    color: var(--text-70);
+    color: var(--color-text-70);
   }
 
   .text-85 {
-    color: var(--text-85);
+    color: var(--color-text-85);
   }
 
   .text-90 {
-    color: var(--text-90);
+    color: var(--color-text-90);
   }
 }
