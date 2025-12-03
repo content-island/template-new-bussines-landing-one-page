@@ -1,8 +1,34 @@
 ---
+import { getFooter } from '#layouts/api';
+import SocialLink from './SocialLink.astro';
+
+const currentYear = new Date().getFullYear();
+
+const { brand, socialLinks, copyright } = await getFooter();
 ---
 
-<footer class="py-md" style="background-color: var(--footer-background); color: var(--footer-text-color);">
-  <div class="container text-2xs text-center">
-    <span>&copy; 2025 Nexus. All rights reserved.</span>
+<footer class="bg-footer-background text-text-contrast py-xl px-md lg:py-xl lg:px-big-3">
+  <div class="gap-lg max-w-max-width mx-auto flex w-full flex-col items-center lg:flex-row lg:justify-between">
+    <div>
+      <a
+        href="#home"
+        class="text-md text-text-contrast block min-w-[210px] text-center font-bold tracking-wider no-underline lg:text-left"
+      >
+        {brand}
+      </a>
+    </div>
+
+    <!-- Social Links -->
+    <div class="gap-sm flex justify-center">
+      {socialLinks?.map(link => <SocialLink href={link.url} title={link.title} icon={link.image} />)}
+    </div>
+
+    <!-- Copyright -->
+    <div>
+      <p class="text-2xs m-0 min-w-[210px] text-center leading-snug lg:text-right">
+        &copy; {currentYear}
+        {copyright}
+      </p>
+    </div>
   </div>
 </footer>
