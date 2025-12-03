@@ -1,0 +1,40 @@
+---
+import Button from '../Button.astro';
+import { getHeroSection } from './api/hero.api.ts';
+
+const { title, subtitle, cta, galleryImages } = await getHeroSection();
+const images = galleryImages ?? [];
+const [hero1, hero2, hero3, hero4] = images;
+---
+
+<section class="py-big-3 px-md lg:py-big-4 lg:px-big-3" id="home">
+  <div class="gap-big-2 lg:gap-xl max-w-max-width mx-auto grid w-full md:grid-cols-2 md:items-center">
+    <div class="gap-md flex flex-col">
+      <h1 class="text-text-90 text-3xl leading-[1.15] font-bold">{title}</h1>
+      <p class="text-text-85 text-sm leading-snug">{subtitle}</p>
+      <Button variant="primary" href={cta?.url} class="text-sm">{cta?.label}</Button>
+    </div>
+    <div class="gap-sm md:gap-md lg:gap-lg grid grid-cols-2">
+      <img
+        src={hero1.url}
+        alt="Modern workspace with laptop and coffee"
+        class="rounded-img col-span-2 h-[120px] w-full object-cover md:h-[140px] lg:h-[211px]"
+      />
+      <img
+        src={hero2.url}
+        alt="Team collaboration meeting"
+        class="rounded-img h-[120px] w-full object-cover md:h-[140px] lg:h-[211px]"
+      />
+      <img
+        src={hero3.url}
+        alt="Professional working on laptop"
+        class="rounded-img h-[120px] w-full object-cover md:h-[140px] lg:h-[211px]"
+      />
+      <img
+        src={hero4.url}
+        alt="Coffee and laptop setup"
+        class="rounded-img h-[120px] w-full object-cover md:h-[140px] lg:h-[211px]"
+      />
+    </div>
+  </div>
+</section>
