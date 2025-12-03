@@ -1,42 +1,88 @@
 ---
+import { getHeader } from '#layouts/api/layout.api.ts';
+import ThemeToggle from './ThemeToggle.astro';
 
+const { title, home, services, contact } = await getHeader();
 ---
 
-<header class="sticky top-0 z-10 border-b border-(--border-default) bg-(--bg-primary)">
-  <nav class="wrapper flex gap-2 sm:gap-6">
-    <ul class="flex grow items-center justify-between gap-4 text-(--text-90) sm:gap-6">
-      <li>
-        <a
-          href="#hero"
-          class="font-semibold underline decoration-2 underline-offset-4 transition-colors duration-300 hover:text-(--accent-color-one) hover:underline hover:decoration-2 hover:underline-offset-4"
-        >
-          NEXUS
-        </a>
-      </li>
-      <li>
-        <ul class="flex grow items-center justify-between gap-4 sm:gap-6">
+<header class="bg-background py-md px-md border-border lg:px-big-3 lg:pt-md sticky top-0 z-100 border-b lg:pb-[17px]">
+  <div class="max-w-width mx-auto w-full">
+    <nav class="flex items-center justify-between">
+      <a href={home.url} class="text-text-90 text-sm font-bold tracking-wider no-underline">{title}</a>
+      <div
+        class="nav__menu bg-background py-big-1 px-md lg:gap-xl fixed top-[58px] right-0 bottom-0 left-0 z-99 flex h-[calc(100dvh-58px)] flex-col items-stretch justify-between gap-0 transition-all duration-300 ease-in-out lg:static lg:top-auto lg:h-auto lg:flex-row lg:items-center lg:justify-normal lg:bg-transparent lg:p-0"
+      >
+        <ul class="gap-xl flex list-none flex-col lg:flex-row">
           <li>
             <a
-              href="#services"
-              class="font-semibold transition-colors duration-300 hover:text-(--accent-color-one) hover:underline hover:decoration-2 hover:underline-offset-4"
+              href={home.url}
+              class="nav__link text-text-90 hover:text-primary text-lg no-underline transition-colors duration-200 lg:text-sm"
+              >{home.label}</a
             >
-              Services
-            </a>
           </li>
           <li>
             <a
-              href="#contact"
-              class="font-semibold transition-colors duration-300 hover:text-(--accent-color-one) hover:underline hover:decoration-2 hover:underline-offset-4"
+              href={services.url}
+              class="nav__link text-text-90 hover:text-primary text-lg no-underline transition-colors duration-200 lg:text-sm"
+              >{services.label}</a
             >
-              Contact
-            </a>
+          </li>
+          <li>
+            <a
+              href={contact.url}
+              class="nav__link text-text-90 hover:text-primary text-lg no-underline transition-colors duration-200 lg:text-sm"
+              >{contact.label}</a
+            >
           </li>
         </ul>
-      </li>
-    </ul>
-    <label class="flex items-center gap-2 font-semibold sm:gap-4">
-      Dark mode:
-      <input type="checkbox" id="theme-toggle" class="h-4 w-4 cursor-pointer accent-(--accent-one) sm:h-6 sm:w-6" />
-    </label>
-  </nav>
+        <div class="pb-lg flex justify-center lg:pb-0">
+          <ThemeToggle />
+        </div>
+      </div>
+      <button
+        class="menu-toggle relative z-101 flex h-10 w-10 flex-col items-center justify-center p-0 lg:hidden"
+        aria-label="Toggle menu"
+      >
+        <span
+          class="hamburger bg-text-90 before:bg-text-90 after:bg-text-90 relative block h-0.5 w-6 transition-all duration-300 ease-in-out before:absolute before:-top-2 before:left-0 before:block before:h-0.5 before:w-6 before:transition-all before:duration-300 before:ease-in-out before:content-[''] after:absolute after:top-2 after:left-0 after:block after:h-0.5 after:w-6 after:transition-all after:duration-300 after:ease-in-out after:content-['']"
+        ></span>
+      </button>
+    </nav>
+  </div>
 </header>
+
+<style>
+  .nav__menu {
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .nav__menu.nav__menu--active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-toggle--active .hamburger {
+    background-color: transparent;
+  }
+
+  .menu-toggle--active .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle--active .hamburger::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  @media (min-width: 1024px) {
+    .nav__menu {
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+</style>

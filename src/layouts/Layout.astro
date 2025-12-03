@@ -1,53 +1,62 @@
 ---
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
-const { title, description } = Astro.props;
+const {
+  title = 'NEXUS - Build Your Digital Future With Confidence',
+  description = 'Transform your ideas into reality with our innovative solutions. We help businesses grow and succeed in the digital age.',
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/css/global.css" />
   </head>
   <body>
     <slot />
-    <script>
-      const themeToggle = document.getElementById('theme-toggle') as HTMLInputElement;
-
-      if (themeToggle) {
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-
-        themeToggle.checked = currentTheme === 'dark';
-
-        themeToggle.addEventListener('change', () => {
-          const newTheme = themeToggle.checked ? 'dark' : 'light';
-
-          if (newTheme === 'dark') {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-
-          localStorage.setItem('theme', newTheme);
-        });
-      }
-    </script>
   </body>
 </html>
 
-<script is:inline>
-  const theme =
-    localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  if (theme === 'dark') {
-    document.documentElement.classList.add('dark');
-  }
+<script>
+  // Theme toggle logic
+  const themeToggle = document.querySelector('.theme-toggle');
+  const html = document.documentElement;
+
+  // Check for saved theme preference or default to 'light'
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  html.setAttribute('data-theme', currentTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  });
+
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navMenu = document.querySelector('.nav__menu');
+  const body = document.body;
+
+  menuToggle?.addEventListener('click', () => {
+    navMenu?.classList.toggle('nav__menu--active');
+    menuToggle?.classList.toggle('menu-toggle--active');
+    body.classList.toggle('menu-open');
+  });
+
+  // Close menu when clicking on a link
+  document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu?.classList.remove('nav__menu--active');
+      menuToggle?.classList.remove('menu-toggle--active');
+      body.classList.remove('menu-open');
+    });
+  });
 </script>
