@@ -1,10 +1,10 @@
 ---
+import type { LanguageCode } from '@content-island/api-client';
 import { getHeader } from '#layouts/api';
 import ThemeToggle from '#common/components/ThemeToggle.astro';
-import type { Language } from '#common/models';
 
 interface Props {
-  lang: Language;
+  lang: LanguageCode;
 }
 const currentPath = Astro.url.pathname;
 const { lang } = Astro.props as Props;

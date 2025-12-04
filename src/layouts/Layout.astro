@@ -1,14 +1,14 @@
 ---
+import type { LanguageCode } from '@content-island/api-client';
 import Footer from './components/Footer.astro';
 import Header from './components/Header.astro';
-import type { Language } from '#common/models';
 
 import '@fontsource-variable/geologica/index.css';
 import '@fontsource-variable/inter/index.css';
 import '../css/global.css';
 
 interface Props {
-  lang: Language;
+  lang: LanguageCode;
   title?: string;
   description?: string;
 }

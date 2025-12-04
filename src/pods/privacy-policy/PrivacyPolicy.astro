@@ -1,10 +1,10 @@
 ---
-import type { Language } from '#common/models';
+import type { LanguageCode } from '@content-island/api-client';
 import { sanitizeHTMLWithMarked } from '#core/helpers';
 import { getPrivacyPolicy } from './api';
 
 interface Props {
-  lang: Language;
+  lang: LanguageCode;
 }
 
 const { lang } = Astro.props as Props;

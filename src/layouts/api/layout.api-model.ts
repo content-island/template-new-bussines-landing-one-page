@@ -1,9 +1,9 @@
-import type { Language, NavigationItem } from '#common/models';
-import type { Media } from '@content-island/api-client';
+import type { Media, LanguageCode } from '@content-island/api-client';
+import type { NavigationItem } from '#common/models';
 
 export interface Header {
   id: string;
-  language: Language;
+  language: LanguageCode;
   lastUpdate: string; // Stores the date in ISO 8601 format. For example: 2021-09-10T19:30:00.000Z
   brand: NavigationItem;
   home: NavigationItem;
@@ -13,7 +13,7 @@ export interface Header {
 
 export interface SocialLink {
   id: string;
-  language: Language;
+  language: LanguageCode;
   lastUpdate: string; // Stores the date in ISO 8601 format. For example: 2021-09-10T19:30:00.000Z
   title: string;
   image: Media;
@@ -22,7 +22,7 @@ export interface SocialLink {
 
 export interface Footer {
   id: string;
-  language: Language;
+  language: LanguageCode;
   lastUpdate: string; // Stores the date in ISO 8601 format. For example: 2021-09-10T19:30:00.000Z
   brand?: string;
   socialLinks?: SocialLink[];

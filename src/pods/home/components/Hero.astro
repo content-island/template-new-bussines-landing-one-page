@@ -1,10 +1,10 @@
 ---
+import type { LanguageCode } from '@content-island/api-client';
 import Button from '#common/components/Button.astro';
-import type { Language } from '#common/models';
 import { getHeroSection } from '../api';
 
 interface Props {
-  lang: Language;
+  lang: LanguageCode;
 }
 const { lang } = Astro.props as Props;
 

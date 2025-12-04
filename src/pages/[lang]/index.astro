@@ -1,5 +1,5 @@
 ---
-import type { Language } from '#common/models';
+import type { LanguageCode } from '@content-island/api-client';
 import { LANGUAGES } from '#core/constans';
 import Layout from '#layouts/Layout.astro';
 import Home from '#pods/home/Home.astro';
@@ -7,7 +7,7 @@ import { getHomeMeta } from '#pods/home/api';
 
 interface Props {
   params: {
-    lang: Language;
+    lang: LanguageCode;
   };
 }
 

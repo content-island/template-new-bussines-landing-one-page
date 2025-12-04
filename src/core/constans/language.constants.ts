@@ -1,3 +1,5 @@
-import type { Language } from '#common/models';
+import type { LanguageCode } from '@content-island/api-client';
+import client from '#lib/client.ts';
 
-export const LANGUAGES: Language[] = ['en', 'es'];
+const { languages } = await client.getProject();
+export const LANGUAGES: LanguageCode[] = languages;

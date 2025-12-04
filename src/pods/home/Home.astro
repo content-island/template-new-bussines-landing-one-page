@@ -1,11 +1,11 @@
 ---
+import type { LanguageCode } from '@content-island/api-client';
 import Hero from './components/Hero.astro';
 import Services from './components/Services.astro';
 import Contact from './components/Contact.astro';
-import type { Language } from '#common/models';
 
 interface Props {
-  lang: Language;
+  lang: LanguageCode;
 }
 
 const { lang } = Astro.props as Props;
