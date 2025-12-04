@@ -7,7 +7,7 @@ const [contactName, contactEmail, contactMessage] = form;
 ---
 
 <section class="py-big-1 px-md lg:py-big-4 lg:px-big-3" id="contact">
-  <div class="max-w-max-width mx-auto w-full">
+  <div class="mx-auto w-full max-w-[var(--container-max-width)]">
     <header class="mb-big-2 gap-lg flex flex-col text-left">
       <h2 class="text-text-90 mb-0 text-2xl leading-none font-bold">{title}</h2>
       <p class="text-text-85 max-w-[48ch] text-sm leading-snug">
@@ -15,7 +15,7 @@ const [contactName, contactEmail, contactMessage] = form;
       </p>
     </header>
 
-    <div class="max-w-max-width mx-auto">
+    <div class="mx-auto max-w-[var(--content-max-width)]">
       <form class="bg-background-secondary py-lg px-md gap-lg flex flex-col rounded-lg" action="#" method="POST">
         <div class="gap-xs flex flex-col">
           <label for={contactName.name} class="text-2xs text-text-85 leading-none font-normal"
