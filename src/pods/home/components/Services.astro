@@ -1,6 +1,6 @@
 ---
 import ServiceCard from './ServiceCard.astro';
-import { getServicesSection } from './api';
+import { getServicesSection } from '../api';
 
 const servicesSection = await getServicesSection();
 const { title, description, services } = servicesSection;

@@ -1,6 +1,6 @@
 ---
-import Button from '../Button.astro';
-import { getContactSection } from './api';
+import Button from '#common/components/Button.astro';
+import { getContactSection } from '../api';
 
 const { title, description, form, submitButtonText } = await getContactSection();
 const [contactName, contactEmail, contactMessage] = form;
