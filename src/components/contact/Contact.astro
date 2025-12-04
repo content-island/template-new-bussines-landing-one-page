@@ -1,0 +1,65 @@
+---
+import Button from '../Button.astro';
+import { getContactSection } from './api';
+
+const { title, description, form, submitButtonText } = await getContactSection();
+const [contactName, contactEmail, contactMessage] = form;
+---
+
+<section class="py-big-1 px-md lg:py-big-4 lg:px-big-3" id="contact">
+  <div class="max-w-max-width mx-auto w-full">
+    <header class="mb-big-2 gap-lg flex flex-col text-left">
+      <h2 class="text-text-90 mb-0 text-2xl leading-none font-bold">{title}</h2>
+      <p class="text-text-85 max-w-[48ch] text-sm leading-snug">
+        {description}
+      </p>
+    </header>
+
+    <div class="max-w-max-width mx-auto">
+      <form class="bg-background-secondary py-lg px-md gap-lg flex flex-col rounded-lg" action="#" method="POST">
+        <div class="gap-xs flex flex-col">
+          <label for={contactName.name} class="text-2xs text-text-85 leading-none font-normal"
+            >{contactName.label}</label
+          >
+          <input
+            type={contactName.type as astroHTML.JSX.HTMLInputTypeAttribute}
+            id={contactName.name}
+            name={contactName.name}
+            class="py-sm bg-input-background text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-background rounded border border-transparent px-3 font-[inherit] text-xs leading-none transition-all duration-300 ease-in-out focus:outline-none"
+            placeholder={contactName.placeholder}
+            required={contactName.required}
+          />
+        </div>
+
+        <div class="gap-xs flex flex-col">
+          <label for={contactEmail.name} class="text-2xs text-text-85 leading-none font-normal"
+            >{contactEmail.label}</label
+          >
+          <input
+            type={contactEmail.type as astroHTML.JSX.HTMLInputTypeAttribute}
+            id={contactEmail.name}
+            name={contactEmail.name}
+            class="py-sm bg-input-background text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-background rounded border border-transparent px-3 font-[inherit] text-xs leading-none transition-all duration-300 ease-in-out focus:outline-none"
+            placeholder={contactEmail.placeholder}
+            required={contactEmail.required}
+          />
+        </div>
+
+        <div class="gap-xs flex flex-col">
+          <label for={contactMessage.name} class="text-2xs text-text-85 leading-none font-normal"
+            >{contactMessage.label}</label
+          >
+          <textarea
+            id={contactMessage.name}
+            name={contactMessage.name}
+            class="py-sm bg-input-background text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-background min-h-[110px] resize-y rounded border border-transparent px-3 font-[inherit] text-xs leading-snug transition-all duration-300 ease-in-out focus:outline-none"
+            placeholder={contactMessage.placeholder}
+            rows="5"
+            required={contactMessage.required}></textarea>
+        </div>
+
+        <Button variant="primary" type="submit" class="self-end"> {submitButtonText} </Button>
+      </form>
+    </div>
+  </div>
+</section>
