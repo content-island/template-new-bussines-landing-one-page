@@ -1,8 +1,11 @@
 ---
 import Layout from '#layouts/Layout.astro';
 import PrivacyPolicyComponent from '#pods/legal/PrivacyPolicy.astro';
+import { getPrivacyPolicyMeta } from '#pods/legal';
 
-const pageTitle = 'Privacy Policy';
+const { title, description } = await getPrivacyPolicyMeta();
 ---
 
-<Layout title={pageTitle}> <PrivacyPolicyComponent /></Layout>
+<Layout title={title} description={description}>
+  <PrivacyPolicyComponent />
+</Layout>

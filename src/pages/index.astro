@@ -1,11 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Home from '../pods/home/Home.astro';
+import Layout from '#layouts/Layout.astro';
+import Home from '#pods/home/Home.astro';
+import { getHomeMeta } from '#pods/home/api';
+
+const { title, description } = await getHomeMeta();
 ---
 
-<Layout
-  title="NEXUS - Build Your Digital Future"
-  description="Build your digital future with confidence. Innovative solutions, cutting-edge technology, and creative strategies to help your business grow."
->
+<Layout title={title} description={description}>
   <Home />
 </Layout>
