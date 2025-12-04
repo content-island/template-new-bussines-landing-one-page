@@ -1,0 +1,33 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import { getServicesSection } from './api';
+
+const servicesSection = await getServicesSection();
+const { title, description, services } = servicesSection;
+---
+
+<section class="py-big-1 px-md lg:py-big-4 lg:px-big-3 bg-background-secondary" id="services">
+  <div class="max-w-max-width mx-auto w-full">
+    <header class="mb-big-2 gap-lg flex flex-col text-center">
+      <h2 class="text-text-90 mb-0 text-2xl leading-none font-bold">{title}</h2>
+      <p class="text-text-85 mx-auto max-w-(--content-max-width) text-sm leading-snug">
+        {description}
+      </p>
+    </header>
+
+    <div class="md:gap-2xl lg:gap-big-1 grid gap-10 lg:mx-auto lg:max-w-(--services-card-width)">
+      {
+        services.map(service => (
+          <ServiceCard
+            title={service.title}
+            description={service.description}
+            image={service.image.url}
+            imageAlt={service.imageAlt}
+            features={service.features}
+            reverse={service.reverseLayout}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
