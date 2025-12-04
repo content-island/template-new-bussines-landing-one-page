@@ -9,5 +9,6 @@ export const LANGUAGE_NAMES: Partial<Record<LanguageCode, string>> = {
   es: 'Español',
   ca: 'Català',
   gl: 'Galego',
-  eu: 'Euskara',
+  eu: 'Euskera',
+  de: 'Deutsch',
 };
