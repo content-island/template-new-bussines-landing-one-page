@@ -15,7 +15,7 @@ const { href, title, icon } = Astro.props;
   target="_blank"
   rel="noopener noreferrer"
   title={title}
-  class="bg-text-contrast text-footer-background flex h-8 w-8 items-center justify-center rounded-full p-1.5 transition-all duration-300 hover:opacity-90"
+  class="bg-button-secondary text-footer-text flex h-8 w-8 items-center justify-center rounded-full p-1.5 transition-all duration-300 hover:opacity-90"
 >
-  <img src={icon.url} alt={icon.name} />
+  <img src={icon.url} alt={icon.name} class="h-full w-full" />
 </a>

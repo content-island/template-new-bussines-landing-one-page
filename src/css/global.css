@@ -18,7 +18,9 @@
   --color-footer-background: #171717;
   --color-shadow: rgb(0 0 0 / 0.1);
   --color-button-primary: #0a0a0a;
+  --color-button-secondary: #fafafa;
   --color-button-outline: #0a0a0a;
+  --color-footer-text: #fafafa;
 
   /* Spacing - Tailwind will generate utilities like p-xs, m-md, gap-lg, etc */
   --spacing-xs: 4px;
@@ -67,7 +69,7 @@
   --color-background-secondary: #171717;
   --color-border: #404040;
   --color-input-background: #262626;
-  --color-footer-background: #000000;
+  --color-footer-background: #171717;
   --color-shadow: rgb(0 0 0 / 0.3);
   --color-button-primary: #fafafa;
   --color-button-outline: #fafafa;

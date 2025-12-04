@@ -7,12 +7,12 @@ const currentYear = new Date().getFullYear();
 const { brand, socialLinks, copyright, privacyPolicy } = await getFooter();
 ---
 
-<footer class="bg-footer-background text-text-contrast py-xl px-md lg:py-xl lg:px-big-3">
+<footer class="bg-footer-background text-footer-text py-xl px-md lg:py-xl lg:px-big-3">
   <div class="gap-lg max-w-max-width mx-auto flex w-full flex-col items-center lg:flex-row lg:justify-between">
     <div>
       <a
         href="#home"
-        class="text-md text-text-contrast block min-w-[210px] text-center font-bold tracking-wider no-underline lg:text-left"
+        class="text-md text-footer-text block min-w-[210px] text-center font-bold tracking-wider no-underline lg:text-left"
       >
         {brand}
       </a>
@@ -25,13 +25,13 @@ const { brand, socialLinks, copyright, privacyPolicy } = await getFooter();
 
     <!-- Copyright & Privacy Policy -->
     <div class="gap-xs flex flex-col items-center lg:items-end">
+      <a href="/privacy-policy" class="text-2xs text-footer-text underline transition-colors duration-200">
+        {privacyPolicy}
+      </a>
       <p class="text-2xs m-0 min-w-[210px] text-center leading-snug lg:text-right">
         &copy; {currentYear}
         {copyright}
       </p>
-      <a href="/privacy-policy" class="text-2xs text-text-contrast underline transition-colors duration-200">
-        {privacyPolicy}
-      </a>
     </div>
   </div>
 </footer>
