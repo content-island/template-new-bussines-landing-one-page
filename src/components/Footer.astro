@@ -4,7 +4,7 @@ import SocialLink from './SocialLink.astro';
 
 const currentYear = new Date().getFullYear();
 
-const { brand, socialLinks, copyright } = await getFooter();
+const { brand, socialLinks, copyright, privacyPolicy } = await getFooter();
 ---
 
 <footer class="bg-footer-background text-text-contrast py-xl px-md lg:py-xl lg:px-big-3">
@@ -23,12 +23,15 @@ const { brand, socialLinks, copyright } = await getFooter();
       {socialLinks?.map(link => <SocialLink href={link.url} title={link.title} icon={link.image} />)}
     </div>
 
-    <!-- Copyright -->
-    <div>
+    <!-- Copyright & Privacy Policy -->
+    <div class="gap-xs flex flex-col items-center lg:items-end">
       <p class="text-2xs m-0 min-w-[210px] text-center leading-snug lg:text-right">
         &copy; {currentYear}
         {copyright}
       </p>
+      <a href="/privacy-policy" class="text-2xs text-text-contrast underline transition-colors duration-200">
+        {privacyPolicy}
+      </a>
     </div>
   </div>
 </footer>

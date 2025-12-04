@@ -1,0 +1,11 @@
+---
+import { sanitizeHTMLWithMarked } from '#core/helpers';
+import { getLegal } from './api/index.ts';
+
+const { privacyPolicity } = await getLegal();
+const htmlContent = sanitizeHTMLWithMarked(privacyPolicity);
+---
+
+<main class="mx-auto max-w-[900px]">
+  <div set:html={htmlContent} class="[&>*+*]:mt-4 [&>h2]:pt-4" />
+</main>

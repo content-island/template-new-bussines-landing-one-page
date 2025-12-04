@@ -1,4 +1,11 @@
 ---
+import Footer from '#components/Footer.astro';
+import Header from '#components/Header.astro';
+
+import '@fontsource-variable/geologica/index.css';
+import '@fontsource-variable/inter/index.css';
+import '../css/global.css';
+
 interface Props {
   title?: string;
   description?: string;
@@ -20,8 +27,12 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="stylesheet" href="/src/css/global.css" />
   </head>
-  <body>
-    <slot />
+  <body class="flex min-h-screen flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>
 

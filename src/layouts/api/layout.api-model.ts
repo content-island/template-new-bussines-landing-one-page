@@ -27,4 +27,5 @@ export interface Footer {
   brand?: string;
   socialLinks?: SocialLink[];
   copyright: string;
+  privacyPolicy: NavigationItem;
 }
