@@ -1,0 +1,23 @@
+---
+import type { Language } from '#common/models';
+import Layout from '#layouts/Layout.astro';
+import Home from '#pods/home/Home.astro';
+import { getHomeMeta } from '#pods/home/api';
+
+interface Props {
+  params: {
+    lang: Language;
+  };
+}
+
+const { lang } = Astro.params as Props['params'];
+const { title, description } = await getHomeMeta(lang);
+
+export const getStaticPaths = () => {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
+};
+---
+
+<Layout lang={lang} title={title} description={description}>
+  <Home lang={lang} />
+</Layout>

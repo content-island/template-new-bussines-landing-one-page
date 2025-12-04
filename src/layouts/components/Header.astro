@@ -1,10 +1,16 @@
 ---
 import { getHeader } from '#layouts/api';
 import ThemeToggle from '#common/components/ThemeToggle.astro';
+import type { Language } from '#common/models';
 
-const { brand, home, services, contact } = await getHeader();
-
+interface Props {
+  lang: Language;
+}
 const currentPath = Astro.url.pathname;
+const { lang } = Astro.props as Props;
+
+const { brand, home, services, contact } = await getHeader(lang);
+
 const isPrivacyPolicyPage = currentPath === '/privacy-policy';
 ---
 

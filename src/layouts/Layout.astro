@@ -1,21 +1,23 @@
 ---
 import Footer from './components/Footer.astro';
 import Header from './components/Header.astro';
+import type { Language } from '#common/models';
 
 import '@fontsource-variable/geologica/index.css';
 import '@fontsource-variable/inter/index.css';
 import '../css/global.css';
 
 interface Props {
+  lang: Language;
   title?: string;
   description?: string;
 }
 
-const { title, description } = Astro.props;
+const { lang, title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,11 +27,11 @@ const { title, description } = Astro.props;
     <link rel="stylesheet" href="/src/css/global.css" />
   </head>
   <body class="flex min-h-screen flex-col">
-    <Header />
+    <Header lang={lang} />
     <main class="flex-1">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>
 

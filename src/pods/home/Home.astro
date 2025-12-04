@@ -2,10 +2,17 @@
 import Hero from './components/Hero.astro';
 import Services from './components/Services.astro';
 import Contact from './components/Contact.astro';
+import type { Language } from '#common/models';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props as Props;
 ---
 
 <>
-  <Hero />
-  <Services />
-  <Contact />
+  <Hero lang={lang} />
+  <Services lang={lang} />
+  <Contact lang={lang} />
 </>

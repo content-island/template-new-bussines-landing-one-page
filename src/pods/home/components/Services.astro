@@ -1,8 +1,14 @@
 ---
 import ServiceCard from './ServiceCard.astro';
 import { getServicesSection } from '../api';
+import type { Language } from '#common/models';
 
-const servicesSection = await getServicesSection();
+interface Props {
+  lang: Language;
+}
+const { lang } = Astro.props as Props;
+
+const servicesSection = await getServicesSection(lang);
 const { title, description, services } = servicesSection;
 ---
 

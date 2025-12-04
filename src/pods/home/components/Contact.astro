@@ -1,8 +1,14 @@
 ---
 import Button from '#common/components/Button.astro';
+import type { Language } from '#common/models';
 import { getContactSection } from '../api';
 
-const { title, description, form, submitButtonText } = await getContactSection();
+interface Props {
+  lang: Language;
+}
+const { lang } = Astro.props as Props;
+
+const { title, description, form, submitButtonText } = await getContactSection(lang);
 const [contactName, contactEmail, contactMessage] = form;
 ---
 

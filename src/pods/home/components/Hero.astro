@@ -1,8 +1,14 @@
 ---
 import Button from '#common/components/Button.astro';
+import type { Language } from '#common/models';
 import { getHeroSection } from '../api';
 
-const { title, subtitle, cta, galleryImages } = await getHeroSection();
+interface Props {
+  lang: Language;
+}
+const { lang } = Astro.props as Props;
+
+const { title, subtitle, cta, galleryImages } = await getHeroSection(lang);
 const images = galleryImages ?? [];
 const [hero1, hero2, hero3, hero4] = images;
 ---

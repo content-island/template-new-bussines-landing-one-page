@@ -1,10 +1,16 @@
 ---
+import type { Language } from '#common/models';
 import { getFooter } from '#layouts/api';
 import SocialLink from './SocialLink.astro';
 
+interface Props {
+  lang: Language;
+}
+
 const currentYear = new Date().getFullYear();
 
-const { brand, socialLinks, copyright, privacyPolicy } = await getFooter();
+const { lang } = Astro.props as Props;
+const { brand, socialLinks, copyright, privacyPolicy } = await getFooter(lang);
 ---
 
 <footer class="bg-footer-background text-footer-text py-xl px-md lg:py-xl lg:px-big-3">
