@@ -1,5 +1,6 @@
 ---
 import type { Language } from '#common/models';
+import { LANGUAGES } from '#core/constans';
 import Layout from '#layouts/Layout.astro';
 import Home from '#pods/home/Home.astro';
 import { getHomeMeta } from '#pods/home/api';
@@ -13,9 +14,12 @@ interface Props {
 const { lang } = Astro.params as Props['params'];
 const { title, description } = await getHomeMeta(lang);
 
-export const getStaticPaths = () => {
-  return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
-};
+export const getStaticPaths = () =>
+  LANGUAGES.map(lang => ({
+    params: {
+      lang,
+    },
+  }));
 ---
 
 <Layout lang={lang} title={title} description={description}>

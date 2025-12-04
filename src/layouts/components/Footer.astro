@@ -1,6 +1,7 @@
 ---
 import type { Language } from '#common/models';
 import { getFooter } from '#layouts/api';
+import { getPrivacyPolicy } from '#pods/privacy-policy/api';
 import SocialLink from './SocialLink.astro';
 
 interface Props {
@@ -11,6 +12,7 @@ const currentYear = new Date().getFullYear();
 
 const { lang } = Astro.props as Props;
 const { brand, socialLinks, copyright, privacyPolicy } = await getFooter(lang);
+const { slug } = await getPrivacyPolicy(lang);
 ---
 
 <footer class="bg-footer-background text-footer-text py-xl px-md lg:py-xl lg:px-big-3">
@@ -31,7 +33,7 @@ const { brand, socialLinks, copyright, privacyPolicy } = await getFooter(lang);
 
     <!-- Copyright & Privacy Policy -->
     <div class="gap-xs flex flex-col items-center lg:items-end">
-      <a href="/privacy-policy" class="text-2xs text-footer-text underline transition-colors duration-200">
+      <a href={`/${lang}/${slug}`} class="text-2xs text-footer-text underline transition-colors duration-200">
         {privacyPolicy}
       </a>
       <p class="text-2xs m-0 min-w-[210px] text-center leading-snug lg:text-right">

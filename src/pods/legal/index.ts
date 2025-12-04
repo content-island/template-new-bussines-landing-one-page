@@ -1,1 +1,0 @@
-export { getPrivacyPolicyMeta } from './api';

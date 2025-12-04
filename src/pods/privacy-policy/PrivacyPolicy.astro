@@ -1,9 +1,15 @@
 ---
+import type { Language } from '#common/models';
 import { sanitizeHTMLWithMarked } from '#core/helpers';
-import { getLegal } from './api/index.ts';
+import { getPrivacyPolicy } from './api';
 
-const { privacyPolicity } = await getLegal();
-const htmlContent = sanitizeHTMLWithMarked(privacyPolicity);
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props as Props;
+const { text } = await getPrivacyPolicy(lang);
+const htmlContent = sanitizeHTMLWithMarked(text);
 ---
 
 <main class="mx-auto max-w-[900px] py-20">
