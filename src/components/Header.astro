@@ -2,13 +2,13 @@
 import { getHeader } from '#layouts/api';
 import ThemeToggle from './ThemeToggle.astro';
 
-const { title, home, services, contact } = await getHeader();
+const { brand, home, services, contact } = await getHeader();
 ---
 
 <header class="bg-background py-md px-md border-border lg:px-big-3 lg:pt-md sticky top-0 z-100 border-b lg:pb-[17px]">
   <div class="mx-auto w-full max-w-[var(--container-max-width)]">
     <nav class="flex items-center justify-between">
-      <a href={home.url} class="text-text-90 text-sm font-bold tracking-wider no-underline">{title}</a>
+      <a href={brand.url} class="text-text-90 text-sm font-bold tracking-wider no-underline">{brand.label}</a>
       <div
         class="nav__menu bg-background py-big-1 px-md lg:gap-xl fixed top-[58px] right-0 bottom-0 left-0 z-99 flex h-[calc(100dvh-58px)] flex-col items-stretch justify-between gap-0 transition-all duration-300 ease-in-out lg:static lg:top-auto lg:h-auto lg:flex-row lg:items-center lg:justify-normal lg:bg-transparent lg:p-0"
       >
