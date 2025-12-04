@@ -1,6 +1,6 @@
 ---
 import type { LanguageCode } from '@content-island/api-client';
-import { LANGUAGES } from '#core/constans';
+import { LANGUAGE_NAMES, LANGUAGES } from '#core/constans';
 import { getFooter } from '#layouts/api';
 import { getPrivacyPolicy } from '#pods/privacy-policy/api';
 import SocialLink from './SocialLink.astro';
@@ -41,7 +41,7 @@ const currentSlug = pathSegments.join('/');
             const optionValue = languagePaths?.[language] ?? `/${language}${slugPart}`;
             return (
               <option value={optionValue} selected={lang === language}>
-                {language === 'en' ? 'English' : 'Español'}
+                {LANGUAGE_NAMES[language]}
               </option>
             );
           })
