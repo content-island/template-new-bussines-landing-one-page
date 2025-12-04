@@ -8,11 +8,23 @@ import { getPrivacyPolicyMeta, getPrivacyPolicy } from '#pods/privacy-policy';
 interface Props {
   params: {
     lang: LanguageCode;
+    privacyPolicy: string;
   };
 }
 
 const { lang } = Astro.params as Props['params'];
 const { title, description } = await getPrivacyPolicyMeta(lang);
+const privacyPolicies = await Promise.all(
+  LANGUAGES.map(async currentLang => ({
+    lang: currentLang,
+    ...(await getPrivacyPolicy(currentLang)),
+  }))
+);
+
+const languagePaths = Object.fromEntries(privacyPolicies.map(({ lang, slug }) => [lang, `/${lang}/${slug}`])) as Record<
+  LanguageCode,
+  string
+>;
 
 export const getStaticPaths = async () =>
   Promise.all(
@@ -24,6 +36,6 @@ export const getStaticPaths = async () =>
   );
 ---
 
-<Layout lang={lang} title={title} description={description}>
+<Layout lang={lang} title={title} description={description} languagePaths={languagePaths}>
   <PrivacyPolicyComponent lang={lang} />
 </Layout>

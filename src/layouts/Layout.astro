@@ -11,9 +11,10 @@ interface Props {
   lang: LanguageCode;
   title?: string;
   description?: string;
+  languagePaths?: Record<LanguageCode, string>;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, languagePaths } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -31,7 +32,7 @@ const { lang, title, description } = Astro.props;
     <main class="flex-1">
       <slot />
     </main>
-    <Footer lang={lang} />
+    <Footer lang={lang} languagePaths={languagePaths} />
   </body>
 </html>
 
