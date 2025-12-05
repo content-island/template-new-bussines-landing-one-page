@@ -29,24 +29,26 @@ const currentSlug = pathSegments.join('/');
       >
         {brand}
       </a>
-      <select
-        id="language-select"
-        aria-label="Select language"
-        class="bg-footer-background text-footer-text border-footer-text focus-visible:outline-primary w-full max-w-[219px] cursor-pointer appearance-none border bg-[url('/ArrowDown.svg')] bg-size-[28px] bg-position-[calc(100%-6px)_50%] bg-no-repeat px-(--spacing-sm) py-[6.4px] pr-[38px] text-[14px] focus-visible:border-transparent focus-visible:outline-[1.5px]"
-        style="grid-area: language;"
-      >
-        {
-          LANGUAGES.map(language => {
-            const slugPart = currentSlug ? `/${currentSlug}` : '/';
-            const optionValue = languagePaths?.[language] ?? `/${language}${slugPart}`;
-            return (
-              <option value={optionValue} selected={lang === language}>
-                {LANGUAGE_NAMES[language]}
-              </option>
-            );
-          })
-        }
-      </select>
+      {
+        LANGUAGES.length > 1 && (
+          <select
+            id="language-select"
+            aria-label="Select language"
+            class="bg-footer-background text-footer-text border-footer-text focus-visible:outline-primary w-full max-w-[219px] cursor-pointer appearance-none border bg-[url('/ArrowDown.svg')] bg-size-[28px] bg-position-[calc(100%-6px)_50%] bg-no-repeat px-(--spacing-sm) py-[6.4px] pr-[38px] text-[14px] focus-visible:border-transparent focus-visible:outline-[1.5px]"
+            style="grid-area: language;"
+          >
+            {LANGUAGES.map(language => {
+              const slugPart = currentSlug ? `/${currentSlug}` : '/';
+              const optionValue = languagePaths?.[language] ?? `/${language}${slugPart}`;
+              return (
+                <option value={optionValue} selected={lang === language}>
+                  {LANGUAGE_NAMES[language]}
+                </option>
+              );
+            })}
+          </select>
+        )
+      }
     </div>
 
     <!-- Social Links -->

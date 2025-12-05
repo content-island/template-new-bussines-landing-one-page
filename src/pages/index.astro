@@ -1,5 +1,8 @@
 ---
+import client from '#lib/client.ts';
 
+const { languages } = await client.getProject();
+const defaultLanguage = languages[0];
 ---
 
-<meta http-equiv="refresh" content="0;url=/en/" />
+<meta http-equiv="refresh" content={`0;url=/${defaultLanguage}/`} />
