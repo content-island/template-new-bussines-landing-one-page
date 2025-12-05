@@ -11,7 +11,7 @@ interface Props {
   lang: LanguageCode;
   title?: string;
   description?: string;
-  languagePaths?: Record<LanguageCode, string>;
+  languagePaths?: Partial<Record<LanguageCode, string>>;
 }
 
 const { lang, title, description, languagePaths } = Astro.props as Props;
