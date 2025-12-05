@@ -8,4 +8,8 @@ export const LANGUAGE_NAMES: Partial<Record<LanguageCode, string>> = {
   en: 'English',
   es: 'Español',
   ca: 'Català',
+  gl: 'Galego',
+  eu: 'Euskera',
+  fr: 'Français',
+  de: 'Deutsch',
 };
