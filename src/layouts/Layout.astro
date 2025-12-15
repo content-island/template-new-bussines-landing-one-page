@@ -6,6 +6,7 @@ import Header from './components/Header.astro';
 import '@fontsource-variable/geologica/index.css';
 import '@fontsource-variable/inter/index.css';
 import '../css/global.css';
+import { getGeneral } from './api';
 
 interface Props {
   lang: LanguageCode;
@@ -15,6 +16,8 @@ interface Props {
 }
 
 const { lang, title, description, languagePaths } = Astro.props as Props;
+
+const { favicon } = await getGeneral(lang);
 ---
 
 <!doctype html>
@@ -24,7 +27,7 @@ const { lang, title, description, languagePaths } = Astro.props as Props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={favicon.url} />
     <link rel="stylesheet" href="/src/css/global.css" />
   </head>
   <body class="flex min-h-screen flex-col">
