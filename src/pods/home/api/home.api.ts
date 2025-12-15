@@ -1,5 +1,5 @@
 import type { LanguageCode } from '@content-island/api-client';
-import type { Meta } from '#common/models';
+import type { PageMeta } from '#common/models';
 import client from '#lib/client.ts';
 import type { ContactSection, HeroSection, ServicesSection } from './home.api-model';
 
@@ -24,8 +24,8 @@ export const getContactSection = async (lang: LanguageCode): Promise<ContactSect
     includeRelatedContent: true,
   });
 
-export const getHomeMeta = async (lang: LanguageCode): Promise<Meta> =>
-  await client.getContent<Meta>({
+export const getHomeMeta = async (lang: LanguageCode): Promise<PageMeta> =>
+  await client.getContent<PageMeta>({
     id: '6931a3f6a89fe07e8789dc3f',
     language: lang,
   });
