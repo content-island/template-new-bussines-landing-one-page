@@ -35,7 +35,8 @@
   --spacing-big-4: 80px;
 
   /* Typography */
-  --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-title: 'Geologica', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
   /* Font sizes - Fluid Typography - Using --text-* to override Tailwind's text utilities */
   --text-2xs: clamp(0.7813rem, 0.775rem + 0.0278vw, 0.8rem);
@@ -88,7 +89,7 @@ html {
 }
 
 body {
-  font-family: var(--font-family-sans);
+  font-family: var(--font-body);
   line-height: 1.6;
   color: var(--color-text-90);
   background-color: var(--color-background);
@@ -97,4 +98,13 @@ body {
 /* Prevent body scroll when mobile menu is open */
 body.menu-open {
   overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-title);
 }

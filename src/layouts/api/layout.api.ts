@@ -1,6 +1,6 @@
 import type { LanguageCode } from '@content-island/api-client';
 import client from '#lib/client.ts';
-import type { Footer, Header } from './layout.api-model';
+import type { Footer, Header, Theme } from './layout.api-model';
 import type { General } from '#common/models';
 
 export const getHeader = async (lang: LanguageCode): Promise<Header> =>
@@ -20,5 +20,11 @@ export const getFooter = async (lang: LanguageCode): Promise<Footer> =>
 export const getGeneral = async (lang: LanguageCode) =>
   await client.getContent<General>({
     contentType: 'General',
+    language: lang,
+  });
+
+export const getTheme = async (lang: LanguageCode) =>
+  await client.getContent<Theme>({
+    contentType: 'Theme',
     language: lang,
   });

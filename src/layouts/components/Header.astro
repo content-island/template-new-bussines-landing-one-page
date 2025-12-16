@@ -11,11 +11,11 @@ const { lang } = Astro.props as Props;
 
 const { brand, home, services, contact } = await getHeader(lang);
 
-const isPrivacyPolicyPage = currentPath === '/privacy-policy';
+const isPrivacyPolicyPage = currentPath === `/${lang}/privacy-policy`;
 ---
 
 <header class="bg-background py-md px-md border-border lg:px-big-3 lg:pt-md sticky top-0 z-100 border-b lg:pb-[17px]">
-  <div class="mx-auto w-full max-w-[var(--container-max-width)]">
+  <div class="max-w-max-width mx-auto w-full">
     <nav class="flex items-center justify-between">
       <a href={`/${lang}`} class="text-text-90 text-sm font-bold tracking-wider no-underline">{brand.label}</a>
       {
