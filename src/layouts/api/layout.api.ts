@@ -27,4 +27,5 @@ export const getTheme = async (lang: LanguageCode) =>
   await client.getContent<Theme>({
     contentType: 'Theme',
     language: lang,
+    includeRelatedContent: true,
   });
