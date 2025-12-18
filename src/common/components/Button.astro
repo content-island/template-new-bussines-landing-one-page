@@ -12,8 +12,8 @@ const baseClass =
   'inline-block py-sm px-md font-semibold text-center rounded leading-snug tracking-wide transition-all duration-300 ease-in-out cursor-pointer w-fit';
 const variantClass =
   variant === 'primary'
-    ? 'bg-button-primary text-text-contrast border border-button-primary hover:opacity-90 hover:-translate-y-0.5'
-    : 'bg-transparent text-button-outline border border-button-outline hover:bg-primary hover:text-text-contrast';
+    ? 'bg-primary-500 text-text-contrast dark:text-text border border-primary-500 hover:bg-primary-600 dark:hover:bg-primary-300 dark:hover:text-primary-950 dark:hover:border-primary-300'
+    : 'bg-transparent text-primary-950 dark:text-primary-50 border border-primary-950 dark:border-primary-50 hover:bg-primary-950 dark:hover:bg-primary-50 hover:text-text-contrast';
 const classes = `${baseClass} ${variantClass} ${className}`.trim();
 ---
 

@@ -20,12 +20,12 @@ const [, , ...pathSegments] = currentPath.split('/').filter(Boolean);
 const currentSlug = pathSegments.join('/');
 ---
 
-<footer class="bg-footer-background text-footer-text py-xl px-md lg:py-xl lg:px-big-3">
+<footer class="bg-primary-950 dark:bg-primary-900 text-primary-50 py-xl px-md lg:py-xl lg:px-big-3">
   <div class="gap-lg max-w-max-width mx-auto flex w-full flex-col items-center lg:flex-row lg:justify-between">
     <div>
       <a
         href={`/${lang}`}
-        class="text-md text-footer-text block min-w-[210px] text-center font-bold tracking-wider no-underline lg:text-left"
+        class="text-md text-primary-50 block min-w-[210px] text-center font-bold tracking-wider no-underline lg:text-left"
       >
         {brand}
       </a>
@@ -34,7 +34,7 @@ const currentSlug = pathSegments.join('/');
           <select
             id="language-select"
             aria-label="Select language"
-            class="bg-footer-background text-footer-text border-footer-text focus-visible:outline-primary w-full max-w-[219px] cursor-pointer appearance-none border bg-[url('/ArrowDown.svg')] bg-size-[28px] bg-position-[calc(100%-6px)_50%] bg-no-repeat px-(--spacing-sm) py-[6.4px] pr-[38px] text-[14px] focus-visible:border-transparent focus-visible:outline-[1.5px]"
+            class="bg-primary-950 dark:bg-primary-900 text-primary-50 border-primary-50 focus-visible:outline-primary-400 w-full max-w-[219px] cursor-pointer appearance-none border bg-[url('/ArrowDown.svg')] bg-size-[28px] bg-position-[calc(100%-6px)_50%] bg-no-repeat px-(--spacing-sm) py-[6.4px] pr-[38px] text-[14px] focus-visible:border-transparent focus-visible:outline-[1.5px]"
             style="grid-area: language;"
           >
             {LANGUAGES.map(language => {
@@ -58,7 +58,10 @@ const currentSlug = pathSegments.join('/');
 
     <!-- Copyright & Privacy Policy -->
     <div class="gap-xs flex flex-col items-center lg:items-end">
-      <a href={`/${lang}/${slug}`} class="text-2xs text-footer-text underline transition-colors duration-200">
+      <a
+        href={`/${lang}/${slug}`}
+        class="text-2xs text-primary-50 hover:text-primary-300 underline transition-colors duration-200"
+      >
         {privacyPolicy}
       </a>
       <p class="text-2xs m-0 min-w-[210px] text-center leading-snug lg:text-right">

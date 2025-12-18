@@ -10,7 +10,7 @@ interface Props {
 
 const { title, description, image, imageAlt, reverse = false, features = [] } = Astro.props;
 
-const cardClass = `bg-background rounded-lg overflow-hidden shadow-[0_4px_10px_0_var(--color-shadow)] transition-all duration-300 ease-in-out flex flex-col gap-md lg:grid lg:grid-cols-2 lg:items-stretch lg:gap-0 lg:h-[360px] ${reverse ? '[direction:rtl] [&>*]:[direction:ltr]' : ''}`;
+const cardClass = `bg-primary-50 dark:bg-primary-950 rounded-lg overflow-hidden shadow-[0_4px_10px_0_hsl(from_var(--color-primary-800)_h_s_l_/_0.15)] dark:shadow-[0_4px_10px_0_hsl(from_var(--color-primary-950)_h_s_l_/_0.3)] transition-all duration-300 ease-in-out flex flex-col gap-md md:grid md:grid-cols-2 md:items-stretch md:gap-0  ${reverse ? '[direction:rtl] [&>*]:[direction:ltr]' : ''}`;
 ---
 
 <article class={cardClass}>

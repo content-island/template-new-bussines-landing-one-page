@@ -22,7 +22,11 @@ const [contactName, contactEmail, contactMessage] = form;
     </header>
 
     <div class="mx-auto max-w-[var(--content-max-width)]">
-      <form class="bg-background-secondary py-lg px-md gap-lg flex flex-col rounded-lg" action="#" method="POST">
+      <form
+        class="bg-primary-300 dark:bg-primary-800 py-lg px-md gap-lg flex flex-col rounded-lg"
+        action="#"
+        method="POST"
+      >
         <div class="gap-xs flex flex-col">
           <label for={contactName.name} class="text-2xs text-text-85 leading-none font-normal"
             >{contactName.label}</label
@@ -31,7 +35,7 @@ const [contactName, contactEmail, contactMessage] = form;
             type={contactName.type as astroHTML.JSX.HTMLInputTypeAttribute}
             id={contactName.name}
             name={contactName.name}
-            class="py-sm bg-input-background text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-background rounded border border-transparent px-3 font-[inherit] text-xs leading-none transition-all duration-300 ease-in-out focus:outline-none"
+            class="py-sm bg-primary-50 dark:bg-primary-950 text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-primary-50 dark:focus:bg-primary-950 border-primary-300 dark:border-primary-950 rounded border px-3 font-[inherit] text-xs leading-none transition-all duration-300 ease-in-out focus:outline-none"
             placeholder={contactName.placeholder}
             required={contactName.required}
           />
@@ -45,7 +49,7 @@ const [contactName, contactEmail, contactMessage] = form;
             type={contactEmail.type as astroHTML.JSX.HTMLInputTypeAttribute}
             id={contactEmail.name}
             name={contactEmail.name}
-            class="py-sm bg-input-background text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-background rounded border border-transparent px-3 font-[inherit] text-xs leading-none transition-all duration-300 ease-in-out focus:outline-none"
+            class="py-sm bg-primary-50 dark:bg-primary-950 text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-primary-50 dark:focus:bg-primary-950 border-primary-300 dark:border-primary-950 rounded border px-3 font-[inherit] text-xs leading-none transition-all duration-300 ease-in-out focus:outline-none"
             placeholder={contactEmail.placeholder}
             required={contactEmail.required}
           />
@@ -58,7 +62,7 @@ const [contactName, contactEmail, contactMessage] = form;
           <textarea
             id={contactMessage.name}
             name={contactMessage.name}
-            class="py-sm bg-input-background text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-background min-h-[110px] resize-y rounded border border-transparent px-3 font-[inherit] text-xs leading-snug transition-all duration-300 ease-in-out focus:outline-none"
+            class="py-sm bg-primary-50 dark:bg-primary-950 text-text-90 placeholder:text-text-60 focus:border-primary focus:bg-primary-50 dark:focus:bg-primary-950 border-primary-300 dark:border-primary-950 min-h-[110px] resize-y rounded border px-3 font-[inherit] text-xs leading-snug transition-all duration-300 ease-in-out focus:outline-none"
             placeholder={contactMessage.placeholder}
             rows="5"
             required={contactMessage.required}></textarea>

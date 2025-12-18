@@ -3,10 +3,8 @@ import type { LanguageCode } from '@content-island/api-client';
 import Footer from './components/Footer.astro';
 import Header from './components/Header.astro';
 
-import '@fontsource-variable/geologica/index.css';
-import '@fontsource-variable/inter/index.css';
 import '../css/global.css';
-import { getGeneral } from './api';
+import { getGeneral, getTheme } from './api';
 
 interface Props {
   lang: LanguageCode;
@@ -18,19 +16,38 @@ interface Props {
 const { lang, title, description, languagePaths } = Astro.props as Props;
 
 const { favicon } = await getGeneral(lang);
+const theme = await getTheme(lang);
+
+const themeVariables = `
+  --color-primary: ${theme.colorPrimary};
+  --font-name-body: ${theme.fontBody.name};
+  --font-name-title: ${theme.fontTitle.name};}
+`;
+
+const fontTitleLink = theme.fontTitle.url
+  ? theme.fontTitle.url
+  : 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap';
+
+const fontBodyLink = theme.fontBody.url
+  ? theme.fontBody.url
+  : 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap';
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} style={themeVariables}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href={favicon.url} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={fontTitleLink} rel="stylesheet" />
+    <link href={fontBodyLink} rel="stylesheet" />
     <link rel="stylesheet" href="/src/css/global.css" />
   </head>
-  <body class="flex min-h-screen flex-col">
+  <body class="text-text-90 bg-primary-50 dark:bg-primary-950 flex min-h-screen flex-col">
     <Header lang={lang} />
     <main class="flex-1">
       <slot />
@@ -38,20 +55,21 @@ const { favicon } = await getGeneral(lang);
     <Footer lang={lang} languagePaths={languagePaths} />
   </body>
 </html>
-
 <script>
-  // Theme toggle logic
-  const themeToggle = document.querySelector('.theme-toggle');
+  const button = document.getElementById('theme-toggle');
   const html = document.documentElement;
+  const storedTheme = localStorage.getItem('theme');
 
-  // Check for saved theme preference or default to 'light'
-  const currentTheme = localStorage.getItem('theme') || 'light';
-  html.setAttribute('data-theme', currentTheme);
+  if (storedTheme) {
+    html.classList.toggle('dark', storedTheme === 'dark');
+  }
+  if (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    html.classList.add('dark');
+  }
 
-  themeToggle?.addEventListener('click', () => {
-    const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-    html.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+  button?.addEventListener('click', () => {
+    html.classList.toggle('dark');
+    localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
   });
 
   // Mobile menu toggle

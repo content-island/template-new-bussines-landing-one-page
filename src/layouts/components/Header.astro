@@ -11,16 +11,18 @@ const { lang } = Astro.props as Props;
 
 const { brand, home, services, contact } = await getHeader(lang);
 
-const isPrivacyPolicyPage = currentPath === '/privacy-policy';
+const isPrivacyPolicyPage = currentPath === `/${lang}/privacy-policy`;
 ---
 
-<header class="bg-background py-md px-md border-border lg:px-big-3 lg:pt-md sticky top-0 z-100 border-b lg:pb-[17px]">
-  <div class="mx-auto w-full max-w-[var(--container-max-width)]">
+<header
+  class="bg-primary-50 dark:bg-primary-950 py-md px-md border-primary-300 dark:border-primary-700 lg:px-big-3 lg:pt-md sticky top-0 z-100 border-b lg:pb-[17px]"
+>
+  <div class="max-w-max-width mx-auto w-full">
     <nav class="flex items-center justify-between">
       <a href={`/${lang}`} class="text-text-90 text-sm font-bold tracking-wider no-underline">{brand.label}</a>
       {
         !isPrivacyPolicyPage && (
-          <div class="nav__menu bg-background py-big-1 px-md lg:gap-xl fixed top-[58px] right-0 bottom-0 left-0 z-99 flex h-[calc(100dvh-58px)] flex-col items-stretch justify-between gap-0 transition-all duration-300 ease-in-out lg:static lg:top-auto lg:h-auto lg:flex-row lg:items-center lg:justify-normal lg:bg-transparent lg:p-0">
+          <div class="nav__menu bg-primary-50 dark:bg-primary-950 py-big-1 px-md lg:gap-xl fixed top-[58px] right-0 bottom-0 left-0 z-99 flex h-[calc(100dvh-58px)] flex-col items-stretch justify-between gap-0 transition-all duration-300 ease-in-out lg:static lg:top-auto lg:h-auto lg:flex-row lg:items-center lg:justify-normal lg:bg-transparent lg:p-0">
             <ul class="gap-xl flex list-none flex-col lg:flex-row">
               <li>
                 <a
