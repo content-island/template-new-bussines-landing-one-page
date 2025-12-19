@@ -26,6 +26,6 @@ export const getContactSection = async (lang: LanguageCode): Promise<ContactSect
 
 export const getHomeMeta = async (lang: LanguageCode): Promise<PageMeta> =>
   await client.getContent<PageMeta>({
-    id: '6931a3f6a89fe07e8789dc3f',
+    "fields.pageId": 'Home',
     language: lang,
   });
