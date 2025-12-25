@@ -23,6 +23,7 @@ const [contactName, contactEmail, contactMessage] = form;
 
     <div class="mx-auto max-w-[var(--content-max-width)]">
       <form
+        id="contact-form"
         class="bg-primary-300 dark:bg-primary-800 py-lg px-md gap-lg flex flex-col rounded-lg"
         action="#"
         method="POST"
@@ -73,3 +74,24 @@ const [contactName, contactEmail, contactMessage] = form;
     </div>
   </div>
 </section>
+<script>
+  const form = document.getElementById('contact-form');
+  export const handleSubmit = async (event: Event) => {
+    event.preventDefault();
+    console.log(`
+🚧 Contact form not implemented yet!
+
+This feature is intentionally left unimplemented so you can plug in
+your favorite email provider 💌✨
+
+👉 Want a quick example?
+Check out this post to learn how to integrate Resend step by step 📬⚡
+https://contentisland.net/en/blog/astro-contact-form-server-actions-resend/
+
+Happy coding! 😄
+`);
+  };
+  if (form) {
+    form.addEventListener('submit', handleSubmit);
+  }
+</script>
