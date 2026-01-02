@@ -13,19 +13,19 @@
     "#*": "./src/*"
   },
   "dependencies": {
-    "@content-island/api-client": "^0.15.0",
-    "astro": "^5.15.9",
-    "marked": "^17.0.0",
+    "@content-island/api-client": "^0.16.0",
+    "astro": "^5.16.6",
+    "marked": "^17.0.1",
     "sanitize-html": "^2.17.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.17",
-    "@tailwindcss/vite": "^4.1.17",
+    "@tailwindcss/postcss": "^4.1.18",
+    "@tailwindcss/vite": "^4.1.18",
     "@types/marked": "^5.0.2",
     "@types/sanitize-html": "^2.16.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.1",
-    "tailwindcss": "^4.1.17"
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.1.18"
   }
 }
