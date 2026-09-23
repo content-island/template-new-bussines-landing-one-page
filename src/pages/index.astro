@@ -1,8 +1,17 @@
 ---
 import client from '#lib/client.ts';
+import { getGeneral } from '#layouts/api';
 
 const { languages } = await client.getProject();
 const defaultLanguage = languages[0];
+const { favicon } = await getGeneral(defaultLanguage);
 ---
 
-<meta http-equiv="refresh" content={`0;url=/${defaultLanguage}/`} />
+<!doctype html>
+<html lang={defaultLanguage}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0;url=/${defaultLanguage}/`} />
+    <link rel="icon" type="image/svg+xml" href={favicon.url} />
+  </head>
+</html>
