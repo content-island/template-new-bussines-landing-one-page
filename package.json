@@ -19,7 +19,7 @@
     "sanitize-html": "^2.18.1"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.3.3",
+    "@tailwindcss/postcss": "^4.3.5",
     "@tailwindcss/vite": "^4.3.3",
     "@types/marked": "^6.0.0",
     "@types/sanitize-html": "^2.16.2",
